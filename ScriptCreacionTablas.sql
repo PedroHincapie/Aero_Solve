@@ -2,57 +2,89 @@ CREATE DATABASE aero_solve;
 
 CREATE TABLE ciudades
 (
-idCiudad INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-nomCiudad VARCHAR(25) NOT NULL
+id_ciudad INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+nom_ciudad VARCHAR(25) NOT NULL
 );
 
 CREATE TABLE vuelos
 (
-idVuelo INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-idCiudadOrg INT UNSIGNED NOT NULL,
-idCiudadDest INT UNSIGNED NOT NULL,
-vlrIda INT UNSIGNED NOT NULL,
-VlrIdaVuelta INT UNSIGNED NOT NULL,
-porcMañana DEC(3,1) NOT NULL,
-porcTarde DEC(3,1) NOT NULL,
-porcFSemana DEC(3,1) NOT NULL,
-FOREIGN KEY (idCiudadOrg) REFERENCES ciudades(idCiudad),
-FOREIGN KEY (idCiudadDest) REFERENCES ciudades(idCiudad)
+id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+id_origen INT UNSIGNED NOT NULL,
+nom_origen  VARCHAR(25) NOT NULL,
+id_dest INT UNSIGNED NOT NULL,
+nom_dest  VARCHAR(25) NOT NULL,
+hora_inic  VARCHAR(25) NOT NULL,
+hora_fin VARCHAR(25) NOT NULL,
+vlr_ida INT UNSIGNED NOT NULL,
+Vlr_idavuelta INT UNSIGNED NOT NULL,
+porc_finsemana DOUBLE(3,1) NOT NULL,
+FOREIGN KEY (id_origen) REFERENCES ciudades(id_ciudad)
 );
 
-INSERT INTO ciudades ( nomCiudad) VALUES ('Cartagena');
-INSERT INTO ciudades ( nomCiudad) VALUES ('Medellin');
-INSERT INTO ciudades ( nomCiudad) VALUES ('Monteria');
-INSERT INTO ciudades ( nomCiudad) VALUES ('Bogota');
-INSERT INTO ciudades ( nomCiudad) VALUES ('Santa Marta');
+CREATE TABLE reservas
+(
+id_reserva INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+id_vuelo INT UNSIGNED NOT NULL,
+id_cedula INT UNSIGNED NOT NULL,
+nom_cliente  VARCHAR(50) NOT NULL,
+vlr_tiquete DOUBLE(7,1) NOT NULL,
+fec_venta  VARCHAR(25) NOT NULL,
+solo_ida VARCHAR(1) NOT NULL,
+fec_ida VARCHAR(25) NOT NULL,
+fec_regreso VARCHAR(25) NULL,
+FOREIGN KEY (id_vuelo) REFERENCES vuelos(id)
+);
+
+INSERT INTO ciudades ( nom_ciudad) VALUES ('Cartagena');
+INSERT INTO ciudades ( nom_ciudad) VALUES ('Medellin');
+INSERT INTO ciudades ( nom_ciudad) VALUES ('Monteria');
+INSERT INTO ciudades ( nom_ciudad) VALUES ('Bogota');
+INSERT INTO ciudades ( nom_ciudad) VALUES ('Santa Marta');
 
 INSERT INTO vuelos (
-idCiudadOrg,
-idCiudadDest,
-vlrIda,
-VlrIdaVuelta,
-porcMañana,
-porcTarde,
-porcFSemana)
- VALUES (2,1,120000,200000,15.5,10.6,25.9);
+id_origen,
+nom_origen,
+id_dest ,
+nom_dest,
+hora_inic  ,
+hora_fin ,
+vlr_ida ,
+Vlr_idavuelta ,
+porc_finsemana)
+ VALUES (2,'Cartagena',1,'Medellin','18:19:03', '18:19:03',120000,200000,25.9);
  
-INSERT INTO vuelos (
-idCiudadOrg,
-idCiudadDest,
-vlrIda,
-VlrIdaVuelta,
-porcMañana,
-porcTarde,
-porcFSemana)
- VALUES (2,3,260000,400000,17.5,12.6,25.9);
  
  INSERT INTO vuelos (
-idCiudadOrg,
-idCiudadDest,
-vlrIda,
-VlrIdaVuelta,
-porcMañana,
-porcTarde,
-porcFSemana)
- VALUES (2,5,90000,150000,25.5,15.6,25.9);
+id_origen,
+nom_origen,
+id_dest ,
+nom_dest,
+hora_inic  ,
+hora_fin ,
+vlr_ida ,
+Vlr_idavuelta ,
+porc_finsemana)
+ VALUES (2,'Cartagena',5,'Santa Marta','18:19:03', '18:19:03',120000,200000,25.9);
  
+  INSERT INTO vuelos (
+id_origen,
+nom_origen,
+id_dest ,
+nom_dest,
+hora_inic  ,
+hora_fin ,
+vlr_ida ,
+Vlr_idavuelta ,
+porc_finsemana)
+ VALUES (2,'Cartagena',3,'Monteria','18:19:03', '18:19:03',120000,200000,25.9);
+ 
+ INSERT INTO reservas (
+id_vuelo ,
+id_cedula ,
+nom_cliente,
+vlr_tiquete,
+fec_venta,
+solo_ida ,
+fec_ida ,
+fec_regreso)
+ VALUES (1, 1067859785,'Pedro Hincapie',150000, NOW(),'S','29-10-2017','01-12-2017');
