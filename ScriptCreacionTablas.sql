@@ -51,7 +51,7 @@ hora_fin ,
 vlr_ida ,
 Vlr_idavuelta ,
 porc_finsemana)
- VALUES (2,'Cartagena',1,'Medellin','18:19:03', '18:19:03',120000,200000,25.9);
+ VALUES (2,'Medellin',1,'Cartagena','08:19:03', '10:19:03',120000,200000,25.9);
  
  
  INSERT INTO vuelos (
@@ -64,7 +64,7 @@ hora_fin ,
 vlr_ida ,
 Vlr_idavuelta ,
 porc_finsemana)
- VALUES (2,'Cartagena',5,'Santa Marta','18:19:03', '18:19:03',120000,200000,25.9);
+ VALUES (2,'Medellin',5,'Santa Marta','10:19:03', '12:19:03',120000,200000,25.9);
  
   INSERT INTO vuelos (
 id_origen,
@@ -76,7 +76,7 @@ hora_fin ,
 vlr_ida ,
 Vlr_idavuelta ,
 porc_finsemana)
- VALUES (2,'Cartagena',3,'Monteria','18:19:03', '18:19:03',120000,200000,25.9);
+ VALUES (2,'Medellin',3,'Monteria','20:19:03', '22:19:03',120000,200000,25.9);
  
  INSERT INTO reservas (
 id_vuelo ,
