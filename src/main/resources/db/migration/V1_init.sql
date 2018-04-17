@@ -1,3 +1,8 @@
+CREATE DATABASE aero_solve;
+
+use aero_solve;
+
+
 CREATE TABLE ciudades
 (
 id_ciudad INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
